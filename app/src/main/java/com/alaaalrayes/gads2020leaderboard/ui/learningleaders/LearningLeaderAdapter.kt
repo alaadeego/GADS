@@ -10,7 +10,7 @@ import com.alaaalrayes.gads2020leaderboard.R
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.item_learning_leader.view.*
 
-
+//AsyncListDiffer
 class LearningLeaderAdapter(val values: List<LearningLeaderModel>, val context: Context) :
     RecyclerView.Adapter<LearningLeaderAdapter.ViewHolder>() {
 
@@ -27,23 +27,31 @@ class LearningLeaderAdapter(val values: List<LearningLeaderModel>, val context: 
     }
 
     override fun onBindViewHolder(holder: LearningLeaderAdapter.ViewHolder, position: Int) {
+//        holder.bind(values.get(position))
 
         holder.name.text = values.get(position).name
-        holder.details_txt.text =  values.get(position).hours.toString()+ " learning hours, " + values.get(position).country
+        holder.details_txt.text =
+            values.get(position).hours.toString() + " learning hours, " + values.get(position).country
 
         Picasso.get().load(values.get(position).badgeUrl).into(holder.img)
 
 
     }
 
-        class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+    class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
-            var name = view.name_txt
-            var details_txt = view.details_txt
-            var img = view.img
+        var name = view.name_txt
+        var details_txt = view.details_txt
+        var img = view.img
 
-
+        fun bind(item: LearningLeaderModel){
+//            holder.name.text = values.get(position).name
+//            holder.details_txt.text =
+//                values.get(position).hours.toString() + " learning hours, " + values.get(position).country
+//
+//            Picasso.get().load(values.get(position).badgeUrl).into(holder.img)
         }
-
-
     }
+
+
+}

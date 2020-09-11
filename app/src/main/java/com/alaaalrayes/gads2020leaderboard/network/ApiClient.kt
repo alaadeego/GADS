@@ -15,10 +15,6 @@ public class ApiClient {
 
 
     lateinit var apiInterface: ApiInterface
-    /*   val retrofit = Retrofit.Builder()
-           .baseUrl(BASE_URL)
-           .addConverterFactory(GsonConverterFactory.create())
-           .build()*/
 
     var okHttpClient = OkHttpClient.Builder()
         .connectTimeout(TIMEOUT_MINUTES, TimeUnit.MINUTES)
