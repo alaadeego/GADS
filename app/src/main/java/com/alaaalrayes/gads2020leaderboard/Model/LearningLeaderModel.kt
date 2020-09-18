@@ -7,22 +7,22 @@ import com.google.gson.annotations.SerializedName
 
 
 
-class LearningLeaderModel {
+data class LearningLeaderModel (
 
     @SerializedName("name")
     @Expose
-     val name: String? = null
+     val name: String? = null,
 
     @SerializedName("hours")
     @Expose
-     val hours: Int? = null
+     val hours: Int? = null,
 
     @SerializedName("country")
     @Expose
-     val country: String? = null
+     val country: String? = null,
 
     @SerializedName("badgeUrl")
     @Expose
      val badgeUrl: String? = null
 
-}
+)

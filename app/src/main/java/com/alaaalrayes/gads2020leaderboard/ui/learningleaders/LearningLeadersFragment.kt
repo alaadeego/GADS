@@ -23,7 +23,7 @@ class LearningLeadersFragment : Fragment() {
 
     private lateinit var viewModel: LearningLeadersViewModel
     private lateinit var mAdapter: LearningLeaderAdapter
-    lateinit  var LearningLeaderList: List<LearningLeaderModel>
+      var LearningLeaderLis=  mutableListOf<LearningLeaderModel>()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -35,13 +35,14 @@ class LearningLeadersFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        initLearningLeaderRecyclerView()
+
         viewModel = ViewModelProvider(this).get(LearningLeadersViewModel::class.java)
         viewModel!!.getLearningLeader()
         viewModel!!.LearningLeaderMutableLiveData.observe(requireActivity() , Observer { list ->
             Log.w("OrdersMutableLiveData" , "OrdersMutableLiveData")
             Toast.makeText(requireContext(), list.get(0).name, Toast.LENGTH_SHORT).show()
-            LearningLeaderList = list
-            initLearningLeaderRecyclerView()
+            mAdapter.submitList(list)
         })
     }
 
@@ -51,9 +52,11 @@ class LearningLeadersFragment : Fragment() {
     }
 
     fun initLearningLeaderRecyclerView() {
-        mAdapter = LearningLeaderAdapter(LearningLeaderList,requireContext())
+        mAdapter = LearningLeaderAdapter(requireContext())
         learningleader_recyclerView.setHasFixedSize(true)
         learningleader_recyclerView.layoutManager = LinearLayoutManager(requireContext())
+        mAdapter.submitList(LearningLeaderLis)
+
         learningleader_recyclerView.adapter = mAdapter
     }
 
