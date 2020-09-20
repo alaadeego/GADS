@@ -13,7 +13,8 @@ import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.item_learning_leader.view.*
 
 //AsyncListDiffer
-class LearningLeaderAdapter( val context: Context) :
+class LearningLeaderAdapter() :
+
     RecyclerView.Adapter<LearningLeaderAdapter.ViewHolder>() {
 
     private val asyncListDiffer: AsyncListDiffer<LearningLeaderModel> =
@@ -65,17 +66,13 @@ class LearningLeaderAdapter( val context: Context) :
     companion object {
         val DIFF_CALLBACK = object : DiffUtil.ItemCallback<LearningLeaderModel>() {
             override fun areItemsTheSame(
-                oldItem: LearningLeaderModel,
-                newItem: LearningLeaderModel
-            ): Boolean =
-                oldItem == newItem
+                oldItem: LearningLeaderModel, newItem: LearningLeaderModel
+            ): Boolean = oldItem.name == newItem.name
 
             override fun areContentsTheSame(
-                oldItem: LearningLeaderModel,
-                newItem: LearningLeaderModel
-            ): Boolean =
-                oldItem == newItem
-
+                oldItem: LearningLeaderModel, newItem: LearningLeaderModel
+            ): Boolean = oldItem == newItem
         }
     }
+
 }
